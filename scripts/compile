@@ -1,0 +1,14 @@
+# fennel -> lua
+
+rm -rf source
+cp -r lisp source
+
+find ./source -type f -exec bash -c 'fennel --compile {} > source/$(basename {} .fnl).lua; rm -rf {}' \;
+
+
+# build
+pdc source You.pdx
+
+
+# run
+open You.pdx
